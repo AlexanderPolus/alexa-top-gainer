@@ -1,16 +1,18 @@
-'use strict';
+//strict mode - http://stackoverflow.com/questions/1335851/what-does-use-strict-do-in-javascript-and-what-is-the-reasoning-behind-it
+'use strict'; 
 
-module.exports.hello = (event, context, callback) => {
+// what module.exports does: https://www.sitepoint.com/understanding-module-exports-exports-node-js/
+module.exports.topGainer = (event, context, callback) => {
   const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
-  };
+    version: '1.0',
+    response: {
+      outputSpeech: {
+        type: 'PlainText',
+        text: 'Here\'s some text.'
+      }
+    }
+  }
 
-  callback(null, response);
+  callback(null, response)
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
-};
+}

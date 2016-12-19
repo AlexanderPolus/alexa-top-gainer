@@ -34,13 +34,18 @@ module.exports.topGainer = (event, context, callback) => {
         promise.resolve()
       }
       catch (err) {
+        console.log('There was an error')
+        console.error(err)
         promise.reject(err)
       }
     })
-    return promise
+    return promise.promise
   }).catch((err) => {
     console.error(err)
     response.response.outputSpeech.text = 'Sorry, there was an error fetching the data'
     callback(null, response)
+  }).finally(() => {
+    process.exit(0)
   })
+
 }
